@@ -9,9 +9,17 @@
 import UIKit
 
 class TestViewController: UIViewController {
+    
+    @IBOutlet weak var countDownLabel: UILabel!
+    
+    var questions: [Question] = []
+    var countdownTimer: Timer!
+    var totalTime = 30
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.startTimer()
+        self.createQuestionObjects()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,5 +36,60 @@ class TestViewController: UIViewController {
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
+}
+
+extension TestViewController: AlertDisplayale { }
+
+//MARK:- Helper Methods:
+extension TestViewController {
     
+    func getQuestions() -> [[String: AnyObject]]? {
+        if let dict = Bundle().parsePlist(ofName: "QuestionsData") {
+            guard let questionsArray = dict["questions"] as? [[String: AnyObject]] else { return [] }
+                return questionsArray
+        } else {
+            return nil
+        }
+    }
+    
+    func createQuestionObjects() {
+        if let questionsArray = self.getQuestions() {
+            for question in questionsArray {
+                if let quest = question["question"] as? String, let num = question["qNum"] as? Int, let answer = question["answer"] as? String, let options = question["options"] as? [String] {
+                    let question = Question(withQuestion: quest, qNum: num, mcqOptions: options, withAnswer: answer)
+                    self.questions.append(question)
+                }
+            }
+            print("Number of Questions are: \(self.questions.count)")
+        }
+    }
+}
+
+//Timer Helper Methods:
+extension TestViewController {
+    
+    func startTimer() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTime() {
+        countDownLabel.text = "\(timeFormatted(totalTime))"
+        
+        if totalTime != 0 {
+            totalTime -= 1
+        } else {
+            endTimer()
+            self.showAlert(withTitle: "Oops...!", andMessage: "Time up..! your score will be recorde, Thank you!")
+        }
+    }
+    
+    func endTimer() {
+        countdownTimer.invalidate()
+    }
+    
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds % 60
+        let minutes: Int = (totalSeconds / 60) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
 }
