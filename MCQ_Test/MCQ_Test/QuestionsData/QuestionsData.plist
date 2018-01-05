@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>questions</key>
+	<array>
+		<dict>
+			<key>qNum</key>
+			<integer>1</integer>
+			<key>question</key>
+			<string>Select the Populler Design pattern in iOS</string>
+			<key>answer</key>
+			<string>MVC</string>
+			<key>options</key>
+			<array>
+				<string>VIPER</string>
+				<string>MVVM</string>
+				<string>MVP</string>
+				<string>MVC</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>2</integer>
+			<key>question</key>
+			<string>The improvement of computer hardware theory is summarized by which law.?</string>
+			<key>answer</key>
+			<string>Moore&apos;s First Law</string>
+			<key>options</key>
+			<array>
+				<string>Metcalf&apos;s law</string>
+				<string>Bill&apos;s Law</string>
+				<string>Moore&apos;s First Law</string>
+				<string>Grove&apos;s law</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>3</integer>
+			<key>question</key>
+			<string>The most widely used computer device is...</string>
+			<key>answer</key>
+			<string>Disc</string>
+			<key>options</key>
+			<array>
+				<string>olid state disks</string>
+				<string>External hard disk</string>
+				<string>Internal hard disk</string>
+				<string>Mouse</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>4</integer>
+			<key>question</key>
+			<string>_______ are software which is used to do particular task.?</string>
+			<key>answer</key>
+			<string>Program</string>
+			<key>options</key>
+			<array>
+				<string>Operating system</string>
+				<string>Program</string>
+				<string>Data</string>
+				<string>Software</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>5</integer>
+			<key>question</key>
+			<string>Who is father of modern computers?</string>
+			<key>answer</key>
+			<string>Charles Babbage</string>
+			<key>options</key>
+			<array>
+				<string>Abraham Lincoln</string>
+				<string>James Gosling</string>
+				<string>Charles Babbage</string>
+				<string>Gordon E. Moore</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>6</integer>
+			<key>question</key>
+			<string>How many generations of computers we have?</string>
+			<key>answer</key>
+			<string>5</string>
+			<key>options</key>
+			<array>
+				<string>6</string>
+				<string>7</string>
+				<string>5</string>
+				<string>4</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>7</integer>
+			<key>question</key>
+			<string>________ controls the way in which the computer system functions and provides a means by which users can interact with the computer.</string>
+			<key>answer</key>
+			<string>The operating system</string>
+			<key>options</key>
+			<array>
+				<string>The operating system</string>
+				<string>The motherboard</string>
+				<string>The platform</string>
+				<string>Application software</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>8</integer>
+			<key>question</key>
+			<string>The difference between people with access to computers and the Internet and those without this access is known as the:</string>
+			<key>answer</key>
+			<string>Moore&apos;s First Law</string>
+			<key>options</key>
+			<array>
+				<string>digital divide.</string>
+				<string>digital multiply</string>
+				<string>digital addition</string>
+				<string>digital subtraction</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>9</integer>
+			<key>question</key>
+			<string>Who is known as Father of Nation ?</string>
+			<key>answer</key>
+			<string>Mahatma Gandhi</string>
+			<key>options</key>
+			<array>
+				<string>Neharu</string>
+				<string>Subhash Chandra Bose</string>
+				<string>Mahatma Gandhi</string>
+				<string>Radhakrishnan</string>
+			</array>
+		</dict>
+		<dict>
+			<key>qNum</key>
+			<integer>10</integer>
+			<key>question</key>
+			<string>Which amoung these are not belongs to Apple Family ?</string>
+			<key>answer</key>
+			<string>Samsung</string>
+			<key>options</key>
+			<array>
+				<string>Macbook Pro</string>
+				<string>iPhone SE</string>
+				<string>Samsung</string>
+				<string>iPhone X</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
