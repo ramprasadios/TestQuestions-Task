@@ -35,7 +35,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="P7V-Ms-Pms" kind="show" id="F6S-ph-ucw"/>
+                                    <segue destination="P7V-Ms-Pms" kind="presentation" id="F6S-ph-ucw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -63,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSg-yJ-jOP">
-                                <rect key="frame" x="8" y="72" width="359" height="60"/>
+                                <rect key="frame" x="8" y="28" width="359" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="juW-kd-hcg">
                                         <rect key="frame" x="8" y="8" width="343" height="44"/>
@@ -75,6 +75,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" image="stopTest"/>
+                                                        <connections>
+                                                            <action selector="stopTestTapped:" destination="P7V-Ms-Pms" eventType="touchUpInside" id="Puw-dv-Yos"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOs-di-L1U">
                                                         <rect key="frame" x="88" y="0.0" width="79.5" height="44"/>
@@ -101,7 +104,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vz7-yK-TKG">
-                                <rect key="frame" x="8" y="140" width="359" height="77"/>
+                                <rect key="frame" x="8" y="96" width="359" height="77"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06u-ct-pGj">
                                         <rect key="frame" x="0.0" y="20.5" width="50" height="36"/>

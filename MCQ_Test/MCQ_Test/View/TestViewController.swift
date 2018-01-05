@@ -17,4 +17,16 @@ class TestViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func stopTestTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Alert...!", message: "Would you like to Stop the test..?", preferredStyle: .alert)
+        let stopAction = UIAlertAction(title: "Stop", style: .destructive) { (UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(stopAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
