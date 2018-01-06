@@ -412,6 +412,9 @@
                                                         <state key="normal" title="Previous">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="previousQuestionTapped:" destination="P7V-Ms-Pms" eventType="touchUpInside" id="0UJ-ha-fVd"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ej-CA-FTH">
                                                         <rect key="frame" x="117" y="0.0" width="109" height="48"/>
@@ -420,6 +423,9 @@
                                                         <state key="normal" title="Skip">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="skipButtonTapped:" destination="P7V-Ms-Pms" eventType="touchUpInside" id="x63-23-dVL"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEK-3Q-7F9">
                                                         <rect key="frame" x="234" y="0.0" width="109" height="48"/>
@@ -428,6 +434,9 @@
                                                         <state key="normal" title="Next">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="nextQuestionTapped:" destination="P7V-Ms-Pms" eventType="touchUpInside" id="YBj-vp-4r7"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -481,6 +490,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="countDownLabel" destination="fu0-VX-eK4" id="Tqc-bw-egQ"/>
+                        <outlet property="questLabel" destination="N3P-Ba-fVu" id="qI3-P7-Hrg"/>
+                        <outlet property="questNumLabel" destination="06u-ct-pGj" id="t9K-5W-54X"/>
+                        <outletCollection property="multileSelections" destination="CTh-c1-DfI" collectionClass="NSMutableArray" id="MOM-ch-lzn"/>
+                        <outletCollection property="multileSelections" destination="oBP-5A-e1h" collectionClass="NSMutableArray" id="ZZD-3G-gUw"/>
+                        <outletCollection property="multileSelections" destination="gxL-gf-0IW" collectionClass="NSMutableArray" id="v0n-6m-IHB"/>
+                        <outletCollection property="multileSelections" destination="p6f-08-x3x" collectionClass="NSMutableArray" id="pSG-Af-UcY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFt-vz-iw5" userLabel="First Responder" sceneMemberID="firstResponder"/>

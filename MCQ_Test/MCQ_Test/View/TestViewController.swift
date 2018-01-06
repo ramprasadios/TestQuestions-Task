@@ -16,15 +16,25 @@ enum Selection: Int {
 class TestViewController: UIViewController {
     
     @IBOutlet weak var countDownLabel: UILabel!
+    @IBOutlet weak var questNumLabel: UILabel!
+    @IBOutlet weak var questLabel: UILabel!
+    
+    @IBOutlet var multileSelections: [DLRadioButton]!
     
     var questions: [Question] = []
     var countdownTimer: Timer!
     var totalTime = 600
+    var currentQuestion: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startTimer()
         self.createQuestionObjects()
+        self.updateQuestion()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +57,27 @@ class TestViewController: UIViewController {
         guard let selectedChoice = Selection(rawValue: sender.tag) else { return }
         self.handleAnsweredQuestion(withSelected: selectedChoice)
     }
+    
+    @IBAction func previousQuestionTapped(_ sender: Any) {
+        if self.currentQuestion > 0 {
+            self.currentQuestion = currentQuestion - 1
+        }
+        self.updateQuestion()
+    }
+    
+    @IBAction func nextQuestionTapped(_ sender: Any) {
+        if self.currentQuestion < self.questions.count - 1 {
+            self.currentQuestion = currentQuestion + 1
+        }
+        self.updateQuestion()
+    }
+    
+    @IBAction func skipButtonTapped(_ sender: Any) {
+        if self.currentQuestion < self.questions.count - 1 {
+            self.currentQuestion = currentQuestion + 1
+        }
+        self.updateQuestion()
+    }
 }
 
 extension TestViewController: AlertDisplayale { }
@@ -67,7 +98,7 @@ extension TestViewController {
         if let questionsArray = self.getQuestions() {
             for question in questionsArray {
                 if let quest = question["question"] as? String, let num = question["qNum"] as? Int, let answer = question["answer"] as? String, let options = question["options"] as? [String] {
-                    let question = Question(withQuestion: quest, qNum: num, mcqOptions: options, withAnswer: answer)
+                    let question = Question(withQuestion: quest, qNum: num, mcqOptions: options, withAnswer: answer, isLeft: false, hasAnswered: false)
                     self.questions.append(question)
                 }
             }
@@ -75,6 +106,17 @@ extension TestViewController {
         }
     }
     
+    func updateQuestion() {
+        let question = self.questions[currentQuestion]
+        for (index, option) in question.options.enumerated() {
+            self.multileSelections[index].setTitle(option, for: .normal)
+            self.multileSelections[index].isSelected = false
+        }
+        self.questNumLabel.text = "Q" + question.quesNum.description
+        self.questLabel.text = question.question
+    }
+    
+    ///Handles Choice selection
     func handleAnsweredQuestion(withSelected option: Selection) {
         
     }
