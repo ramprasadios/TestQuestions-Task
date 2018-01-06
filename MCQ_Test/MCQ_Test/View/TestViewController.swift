@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import DLRadioButton
+
+enum Selection: Int {
+    case a = 0,b = 1,c = 2,d = 3
+}
 
 class TestViewController: UIViewController {
     
@@ -14,7 +19,7 @@ class TestViewController: UIViewController {
     
     var questions: [Question] = []
     var countdownTimer: Timer!
-    var totalTime = 30
+    var totalTime = 600
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +40,12 @@ class TestViewController: UIViewController {
         alertController.addAction(stopAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func optionSelection(_ sender: DLRadioButton) {
+        print("Selected Button is: \((sender as AnyObject).tag)")
+        guard let selectedChoice = Selection(rawValue: sender.tag) else { return }
+        self.handleAnsweredQuestion(withSelected: selectedChoice)
     }
 }
 
@@ -62,6 +73,10 @@ extension TestViewController {
             }
             print("Number of Questions are: \(self.questions.count)")
         }
+    }
+    
+    func handleAnsweredQuestion(withSelected option: Selection) {
+        
     }
 }
 
