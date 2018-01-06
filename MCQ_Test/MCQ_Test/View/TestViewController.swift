@@ -9,6 +9,10 @@
 import UIKit
 import DLRadioButton
 
+protocol UIUpdaterDelegate: class {
+    func submitTestTapped(withTestInfo info: [String: AnyObject])
+}
+
 enum Selection: Int {
     case a = 0,b = 1,c = 2,d = 3
 }
@@ -25,6 +29,7 @@ class TestViewController: UIViewController {
     var countdownTimer: Timer!
     var totalTime = 600
     var currentQuestion: Int = 0
+    weak var delegate: UIUpdaterDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,20 +47,14 @@ class TestViewController: UIViewController {
     }
     
     @IBAction func stopTestTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Alert...!", message: "Would you like to Stop the test..?", preferredStyle: .alert)
-        let stopAction = UIAlertAction(title: "Stop", style: .destructive) { (UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alertController.addAction(stopAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        self.submitTest()
     }
     
     @IBAction func optionSelection(_ sender: DLRadioButton) {
         print("Selected Button is: \((sender as AnyObject).tag)")
         guard let selectedChoice = Selection(rawValue: sender.tag) else { return }
         self.handleAnsweredQuestion(withSelected: selectedChoice)
+        self.questions[currentQuestion].selectedAnswer = sender.currentTitle
     }
     
     @IBAction func previousQuestionTapped(_ sender: Any) {
@@ -77,6 +76,10 @@ class TestViewController: UIViewController {
             self.currentQuestion = currentQuestion + 1
         }
         self.updateQuestion()
+    }
+    
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        self.submitTest()
     }
 }
 
@@ -110,15 +113,47 @@ extension TestViewController {
         let question = self.questions[currentQuestion]
         for (index, option) in question.options.enumerated() {
             self.multileSelections[index].setTitle(option, for: .normal)
-            self.multileSelections[index].isSelected = false
+            if let indexVal = self.questions[currentQuestion].optionSelected?.rawValue {
+                self.multileSelections[indexVal].isSelected = true
+            } else {
+                self.multileSelections[index].isSelected = false
+            }
         }
-        self.questNumLabel.text = "Q" + question.quesNum.description
+        self.questNumLabel.text = "Q" + question.quesNum.description + "."
         self.questLabel.text = question.question
     }
     
     ///Handles Choice selection
     func handleAnsweredQuestion(withSelected option: Selection) {
-        
+        self.questions[currentQuestion].answered = true
+        self.questions[currentQuestion].optionSelected = option
+    }
+    
+    func submitTest() {
+        var testCompletedInfo = [String: AnyObject]()
+        let answeredCount = self.questions.filter({$0.answered}).count
+        let correctAnswers = self.questions.filter({
+            $0.answer == $0.selectedAnswer
+        })
+        print("Correct Answers: \(correctAnswers.count)")
+        print("Answered count: \(answeredCount)")
+        print("Left Count: \(self.questions.count - answeredCount)")
+        testCompletedInfo["correct"] = correctAnswers.count as AnyObject
+        testCompletedInfo["answered"] = answeredCount as AnyObject
+        testCompletedInfo["left"] = self.questions.count - answeredCount as AnyObject
+        self.delegate?.submitTestTapped(withTestInfo: testCompletedInfo)
+        self.showCustomAlert(withMessage: "Are you sure you want to End the test...?")
+    }
+    
+    func showCustomAlert(withMessage message: String) {
+        let alertController = UIAlertController(title: "Alert...!", message: message, preferredStyle: .alert)
+        let stopAction = UIAlertAction(title: "Yes", style: .destructive) { (UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(stopAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

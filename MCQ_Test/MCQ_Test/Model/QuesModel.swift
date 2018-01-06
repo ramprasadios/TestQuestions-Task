@@ -15,6 +15,8 @@ struct Question {
     var answer: String
     var left: Bool
     var answered: Bool
+    var optionSelected: Selection?
+    var selectedAnswer: String?
     
     init(withQuestion question: String,
          qNum num: Int,
