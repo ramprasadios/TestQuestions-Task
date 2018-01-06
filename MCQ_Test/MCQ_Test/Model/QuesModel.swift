@@ -13,14 +13,22 @@ struct Question {
     var quesNum: Int
     var options: [String]
     var answer: String
+    var left: Bool
+    var answered: Bool
+    var optionSelected: Selection?
+    var selectedAnswer: String?
     
     init(withQuestion question: String,
          qNum num: Int,
          mcqOptions options: [String],
-         withAnswer answer: String) {
+         withAnswer answer: String,
+         isLeft left: Bool,
+         hasAnswered answered: Bool) {
         self.question = question
         self.quesNum = num
         self.options = options
         self.answer = answer
+        self.left = left
+        self.answered = answered
     }
 }
