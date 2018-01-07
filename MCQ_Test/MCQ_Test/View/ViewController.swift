@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //Interface Builder - Referencing Outlets:
     @IBOutlet weak var correctAnswerLabel: UILabel!
     @IBOutlet weak var incorrectAnswerLabel: UILabel!
     @IBOutlet weak var leftAnswersLabel: UILabel!
@@ -18,8 +19,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultStackView: UIStackView!
     @IBOutlet weak var testAnalysisStackView: UIStackView!
     
+    //Outlet Collection:
     @IBOutlet var instructions: [UILabel]!
 
+    //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUIVisibility(isVisible: true)
@@ -42,15 +45,15 @@ class ViewController: UIViewController {
     }
 }
 
+//MARK:- UIUpdaterDelegate Methods
 extension ViewController: UIUpdaterDelegate {
     func submitTestTapped(withTestInfo info: [String : AnyObject]) {
         guard let correctAnswers = info["correct"] as? Int,
-            let answeredCount = info["answered"] as? Int,
             let leftCount = info["left"] as? Int  else { return }
-        self.correctAnswerLabel.text = correctAnswers.description + "Correct"
-        self.incorrectAnswerLabel.text = (10 - correctAnswers).description + "In-Correct"
-        self.leftAnswersLabel.text = leftCount.description + "Left"
-        self.scoredLabel.text = answeredCount.description
+        self.correctAnswerLabel.text = correctAnswers.description + " Correct"
+        self.incorrectAnswerLabel.text = (10 - correctAnswers).description + " In-Correct"
+        self.leftAnswersLabel.text = leftCount.description + " Left"
+        self.scoredLabel.text = correctAnswers.description
         self.setUIVisibility(isVisible: false)
         
         for instruction in self.instructions {
