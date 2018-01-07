@@ -550,10 +550,10 @@
                         <outlet property="countDownLabel" destination="fu0-VX-eK4" id="Tqc-bw-egQ"/>
                         <outlet property="questLabel" destination="N3P-Ba-fVu" id="qI3-P7-Hrg"/>
                         <outlet property="questNumLabel" destination="06u-ct-pGj" id="t9K-5W-54X"/>
-                        <outletCollection property="multileSelections" destination="CTh-c1-DfI" collectionClass="NSMutableArray" id="MOM-ch-lzn"/>
-                        <outletCollection property="multileSelections" destination="oBP-5A-e1h" collectionClass="NSMutableArray" id="ZZD-3G-gUw"/>
-                        <outletCollection property="multileSelections" destination="gxL-gf-0IW" collectionClass="NSMutableArray" id="v0n-6m-IHB"/>
-                        <outletCollection property="multileSelections" destination="p6f-08-x3x" collectionClass="NSMutableArray" id="pSG-Af-UcY"/>
+                        <outletCollection property="multipleSelections" destination="CTh-c1-DfI" collectionClass="NSMutableArray" id="L6s-zu-tHa"/>
+                        <outletCollection property="multipleSelections" destination="oBP-5A-e1h" collectionClass="NSMutableArray" id="Ny2-Em-Dy7"/>
+                        <outletCollection property="multipleSelections" destination="gxL-gf-0IW" collectionClass="NSMutableArray" id="H80-CH-DPx"/>
+                        <outletCollection property="multipleSelections" destination="p6f-08-x3x" collectionClass="NSMutableArray" id="j0K-MP-O59"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFt-vz-iw5" userLabel="First Responder" sceneMemberID="firstResponder"/>

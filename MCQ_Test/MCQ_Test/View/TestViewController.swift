@@ -9,28 +9,34 @@
 import UIKit
 import DLRadioButton
 
+//UIUpdater Protocol
 protocol UIUpdaterDelegate: class {
     func submitTestTapped(withTestInfo info: [String: AnyObject])
 }
 
+//Choice Selection Enumeration
 enum Selection: Int {
     case a = 0,b = 1,c = 2,d = 3
 }
 
 class TestViewController: UIViewController {
     
+    //Interface Builder - Referencing Outlets:
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var questNumLabel: UILabel!
     @IBOutlet weak var questLabel: UILabel!
     
-    @IBOutlet var multileSelections: [DLRadioButton]!
+    //Outlet Collection:
+    @IBOutlet var multipleSelections: [DLRadioButton]!
     
+    //Stored Properties:
     var questions: [Question] = []
     var countdownTimer: Timer!
     var totalTime = 600
     var currentQuestion: Int = 0
     weak var delegate: UIUpdaterDelegate?
 
+    //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startTimer()
@@ -50,6 +56,7 @@ class TestViewController: UIViewController {
         self.submitTest()
     }
     
+    //Actions Methods
     @IBAction func optionSelection(_ sender: DLRadioButton) {
         print("Selected Button is: \((sender as AnyObject).tag)")
         guard let selectedChoice = Selection(rawValue: sender.tag) else { return }
@@ -83,11 +90,14 @@ class TestViewController: UIViewController {
     }
 }
 
+//POP - Inheriting AlertDisplayable Protocol For Alert Display.
+//MARK:- AlertDisplayale Protocol
 extension TestViewController: AlertDisplayale { }
 
 //MARK:- Helper Methods:
 extension TestViewController {
     
+    ///Parsees the pList file and Generates the Questions Object
     func getQuestions() -> [[String: AnyObject]]? {
         if let dict = Bundle().parsePlist(ofName: "QuestionsData") {
             guard let questionsArray = dict["questions"] as? [[String: AnyObject]] else { return [] }
@@ -97,6 +107,7 @@ extension TestViewController {
         }
     }
     
+    //Creates the Questions Object of Model Structure
     func createQuestionObjects() {
         if let questionsArray = self.getQuestions() {
             for question in questionsArray {
@@ -112,11 +123,11 @@ extension TestViewController {
     func updateQuestion() {
         let question = self.questions[currentQuestion]
         for (index, option) in question.options.enumerated() {
-            self.multileSelections[index].setTitle(option, for: .normal)
+            self.multipleSelections[index].setTitle(option, for: .normal)
             if let indexVal = self.questions[currentQuestion].optionSelected?.rawValue {
-                self.multileSelections[indexVal].isSelected = true
+                self.multipleSelections[indexVal].isSelected = true
             } else {
-                self.multileSelections[index].isSelected = false
+                self.multipleSelections[index].isSelected = false
             }
         }
         self.questNumLabel.text = "Q" + question.quesNum.description + "."
@@ -129,17 +140,14 @@ extension TestViewController {
         self.questions[currentQuestion].optionSelected = option
     }
     
+    //Submit the test with the Questions attended records.
     func submitTest() {
         var testCompletedInfo = [String: AnyObject]()
         let answeredCount = self.questions.filter({$0.answered}).count
         let correctAnswers = self.questions.filter({
             $0.answer == $0.selectedAnswer
         })
-        print("Correct Answers: \(correctAnswers.count)")
-        print("Answered count: \(answeredCount)")
-        print("Left Count: \(self.questions.count - answeredCount)")
         testCompletedInfo["correct"] = correctAnswers.count as AnyObject
-        testCompletedInfo["answered"] = answeredCount as AnyObject
         testCompletedInfo["left"] = self.questions.count - answeredCount as AnyObject
         self.delegate?.submitTestTapped(withTestInfo: testCompletedInfo)
         self.showCustomAlert(withMessage: "Are you sure you want to End the test...?")
@@ -157,7 +165,7 @@ extension TestViewController {
     }
 }
 
-//Timer Helper Methods:
+//MARK:- Timer Helper Methods:
 extension TestViewController {
     
     func startTimer() {
