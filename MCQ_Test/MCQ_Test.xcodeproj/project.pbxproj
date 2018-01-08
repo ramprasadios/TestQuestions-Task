@@ -11,12 +11,12 @@
 		211324661FFF131700D7107A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 211324641FFF131700D7107A /* Main.storyboard */; };
 		211324681FFF131700D7107A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 211324671FFF131700D7107A /* Assets.xcassets */; };
 		2113246B1FFF131700D7107A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 211324691FFF131700D7107A /* LaunchScreen.storyboard */; };
-		211324741FFF1E1D00D7107A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211324731FFF1E1D00D7107A /* ViewController.swift */; };
 		211324781FFF1E8000D7107A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211324771FFF1E8000D7107A /* TestViewController.swift */; };
 		218C61681FFF6BE5000A7F18 /* QuestionsData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 218C61671FFF6BE5000A7F18 /* QuestionsData.plist */; };
 		218C616B1FFF7FA4000A7F18 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C616A1FFF7FA4000A7F18 /* Bundle+Extension.swift */; };
 		218C61701FFF93DE000A7F18 /* QuesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C616F1FFF93DE000A7F18 /* QuesModel.swift */; };
 		218C61731FFF9BBB000A7F18 /* TestProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C61721FFF9BBB000A7F18 /* TestProtocols.swift */; };
+		219B6C05200364F900B9EADA /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B6C04200364F900B9EADA /* HomeController.swift */; };
 		B11D967FBCD5AC0F5F15FCAB /* Pods_MCQ_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3267A993819A7C1F211A52 /* Pods_MCQ_Test.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,12 +28,12 @@
 		211324671FFF131700D7107A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2113246A1FFF131700D7107A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2113246C1FFF131700D7107A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		211324731FFF1E1D00D7107A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		211324771FFF1E8000D7107A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		218C61671FFF6BE5000A7F18 /* QuestionsData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = QuestionsData.plist; sourceTree = "<group>"; };
 		218C616A1FFF7FA4000A7F18 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		218C616F1FFF93DE000A7F18 /* QuesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuesModel.swift; sourceTree = "<group>"; };
 		218C61721FFF9BBB000A7F18 /* TestProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProtocols.swift; sourceTree = "<group>"; };
+		219B6C04200364F900B9EADA /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3D475C2AFD2A2661ACE714D1 /* Pods-MCQ_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCQ_Test.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCQ_Test/Pods-MCQ_Test.release.xcconfig"; sourceTree = "<group>"; };
 		5A3267A993819A7C1F211A52 /* Pods_MCQ_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCQ_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,7 +88,7 @@
 		211324721FFF1E1D00D7107A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				211324731FFF1E1D00D7107A /* ViewController.swift */,
+				219B6C04200364F900B9EADA /* HomeController.swift */,
 				211324771FFF1E8000D7107A /* TestViewController.swift */,
 			);
 			path = View;
@@ -274,8 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				218C61701FFF93DE000A7F18 /* QuesModel.swift in Sources */,
-				211324741FFF1E1D00D7107A /* ViewController.swift in Sources */,
 				211324781FFF1E8000D7107A /* TestViewController.swift in Sources */,
+				219B6C05200364F900B9EADA /* HomeController.swift in Sources */,
 				218C61731FFF9BBB000A7F18 /* TestProtocols.swift in Sources */,
 				211324611FFF131600D7107A /* AppDelegate.swift in Sources */,
 				218C616B1FFF7FA4000A7F18 /* Bundle+Extension.swift in Sources */,
